@@ -96,6 +96,19 @@ class Inventario:
         tabla["vencimiento"] = tabla["vencimiento"].dt.date
         return tabla[tabla["en_riesgo"] > 0].sort_values("dias_para_vencer")
 
+    def crecimiento_consumo(self, kg_por_dia):
+        """Cuánto creció el uso de cada insumo por kg de helado vendido, del 1.er al 2.º semestre.
+
+        Se divide por los kg vendidos para que la temporada (más ventas en verano) no influya:
+        solo crece el insumo cuyos sabores ganan participación.
+        """
+        consumo = self._consumo.groupby(self._consumo.index.month > 6).sum()
+        kg = kg_por_dia.groupby(kg_por_dia.index.month > 6).sum()
+        if len(kg) < 2:
+            raise ValueError("Se necesitan ventas de los dos semestres para medir el crecimiento")
+        por_kg = consumo.div(kg, axis=0)
+        return (por_kg.loc[True] / por_kg.loc[False] - 1).round(3)
+
     def costo_mensual(self):
         """Costo unitario promedio de cada insumo en cada mes (por la inflación, cambia mes a mes)."""
         compras = self._compras.assign(mes=self._compras["fecha"].dt.month)

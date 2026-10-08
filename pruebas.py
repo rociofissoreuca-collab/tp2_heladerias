@@ -107,5 +107,36 @@ assert abs(por_sabor["kg_tirados"].sum() - cristalizado) < 0.01, "Los cortes de 
 assert centro.sabores_a_discontinuar().index[0] == "menta granizada"
 assert barrio.sabores_a_discontinuar().index[0] == "menta granizada"
 assert "pistacho" not in centro.sabores_a_discontinuar().index, "Las ediciones limitadas no se discontinúan"
+# 9. Recomendación: herencia y polimorfismo
+from recomendador import Recomendacion, RecomendacionConservadora, RecomendacionInnovadora, Recomendador
+
+for mes_invalido in [0, 13, "julio", 7.5]:
+    try:
+        Recomendador(centro, mes_invalido)
+        raise AssertionError(f"Debía rechazar el mes {mes_invalido!r}")
+    except ValueError:
+        pass
+
+recomendacion_centro = Recomendador(centro, 12).recomendar()
+recomendacion_barrio = Recomendador(barrio, 12).recomendar()
+assert isinstance(recomendacion_centro, RecomendacionInnovadora)
+assert isinstance(recomendacion_barrio, RecomendacionConservadora)
+assert isinstance(recomendacion_centro, Recomendacion) and isinstance(recomendacion_barrio, Recomendacion)
+assert recomendacion_centro.insumo == "chispitas de chocolate" and recomendacion_barrio.insumo == "banana"
+assert recomendacion_centro.accion() != recomendacion_barrio.accion(), "Cada hija actúa distinto"
+assert "pistacho" not in Recomendador(centro, 12).candidatos().index, "Solo insumos de sabores fijos en carta"
+assert not Recomendador(barrio, 7).candidatos().loc["frutilla", "abastecible"]
+
+# Filtro de abastecimiento: si las chispitas escasearan en diciembre, se pasa al siguiente insumo
+centro_con_escasez = Heladeria("datos/heladeria_centro")
+centro_con_escasez.inventario._insumos.loc["chispitas de chocolate", "meses_escasez"] = "12"
+insumo, crecimiento, descartados = Recomendador(centro_con_escasez, 12).insumo_estrella()
+assert insumo == "galletitas" and descartados == ["chispitas de chocolate"]
+
+try:
+    Recomendacion(centro, 12, "cacao", 0.1, [], None, []).accion()
+    raise AssertionError("La clase madre no debe definir la acción")
+except NotImplementedError:
+    pass
 
 print("Todas las pruebas pasaron ✔")
