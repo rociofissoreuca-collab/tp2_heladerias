@@ -1,0 +1,23 @@
+insumo,tipo,unidad,stock_inicial,stock_minimo,dias_entrega,meses_escasez
+leche,base,l,409.25,272.83,1,
+crema,base,l,217.03,155.02,2,
+azúcar,base,kg,218.66,163.99,3,
+vainilla,distintivo,l,1.58,1.26,5,
+esencia de menta,distintivo,l,0.75,0.62,7,
+cacao,distintivo,kg,19.74,15.35,4,
+chispitas de chocolate,distintivo,kg,35.35,27.49,4,
+dulce de leche,distintivo,kg,98.72,70.51,2,
+frutilla,distintivo,kg,45.63,32.59,2,6-7-8
+banana,distintivo,kg,38.22,27.3,2,
+durazno,distintivo,kg,15.01,10.72,2,5-6-7-8-9
+limón,distintivo,kg,24.63,17.59,2,
+maracuyá,distintivo,kg,43.87,35.09,5,5-6-7-8-9-10
+galletitas,distintivo,kg,24.22,18.16,3,
+pistacho,distintivo,kg,5.04,4.2,7,
+cono,envase,u,328.0,246.0,3,
+vasito,envase,u,248.0,186.0,3,
+palito,envase,u,304.0,228.0,3,
+pote 1/4,envase,u,232.0,174.0,3,
+pote 1/2,envase,u,240.0,180.0,3,
+pote 1 kg,envase,u,832.0,624.0,3,
+bandeja,envase,u,240.0,180.0,3,

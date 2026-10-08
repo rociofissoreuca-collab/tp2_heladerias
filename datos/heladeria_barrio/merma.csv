@@ -1,0 +1,196 @@
+fecha,tipo,nombre,cantidad,motivo
+2025-01-01,sabor,Dulce de leche granizado,2.03,cristalizado
+2025-01-02,sabor,Banana split,1.05,cristalizado
+2025-01-02,sabor,Frutilla al agua,1.07,cristalizado
+2025-01-04,sabor,Menta granizada,2.12,cristalizado
+2025-01-04,sabor,Dulce de leche granizado,1.79,cristalizado
+2025-01-04,insumo,banana,0.36,en mal estado
+2025-01-06,sabor,Tramontana,2.3,cristalizado
+2025-01-06,insumo,durazno,0.31,en mal estado
+2025-01-11,insumo,maracuyá,1.22,en mal estado
+2025-01-13,sabor,Frutilla a la crema,2.12,cristalizado
+2025-01-15,sabor,Frutilla al agua,0.97,cristalizado
+2025-01-17,sabor,Tramontana,2.17,cristalizado
+2025-01-18,sabor,Dulce de leche granizado,1.8,cristalizado
+2025-01-20,sabor,Durazno a la crema,1.7,cristalizado
+2025-01-21,sabor,Granizado,1.54,cristalizado
+2025-01-23,insumo,frutilla,0.61,en mal estado
+2025-01-24,sabor,Vainilla,2.42,corte de luz
+2025-01-24,sabor,Crema americana,3.08,corte de luz
+2025-01-24,sabor,Menta granizada,3.9,corte de luz
+2025-01-24,sabor,Chocolate,3.72,corte de luz
+2025-01-24,sabor,Chocolate amargo,3.27,corte de luz
+2025-01-24,sabor,Granizado,3.5,corte de luz
+2025-01-24,sabor,Dulce de leche,3.59,corte de luz
+2025-01-24,sabor,Dulce de leche granizado,3.68,corte de luz
+2025-01-24,sabor,Frutilla a la crema,3.15,corte de luz
+2025-01-24,sabor,Banana split,2.43,corte de luz
+2025-01-24,sabor,Durazno a la crema,2.91,corte de luz
+2025-01-24,sabor,Limón,2.43,corte de luz
+2025-01-24,sabor,Frutilla al agua,3.02,corte de luz
+2025-01-24,sabor,Maracuyá,3.01,corte de luz
+2025-01-24,sabor,Cookies,3.76,corte de luz
+2025-01-24,sabor,Tramontana,2.69,corte de luz
+2025-01-30,sabor,Chocolate amargo,1.93,cristalizado
+2025-02-02,sabor,Crema americana,0.64,cristalizado
+2025-02-02,sabor,Menta granizada,2.1,cristalizado
+2025-02-16,insumo,limón,0.55,en mal estado
+2025-02-19,sabor,Vainilla,0.98,cristalizado
+2025-02-19,sabor,Dulce de leche,2.1,cristalizado
+2025-02-19,sabor,Banana split,1.49,cristalizado
+2025-02-22,insumo,frutilla,0.33,en mal estado
+2025-02-24,sabor,Vainilla,3.0,corte de luz
+2025-02-24,sabor,Crema americana,3.62,corte de luz
+2025-02-24,sabor,Menta granizada,2.67,corte de luz
+2025-02-24,sabor,Chocolate,3.85,corte de luz
+2025-02-24,sabor,Chocolate amargo,3.19,corte de luz
+2025-02-24,sabor,Granizado,2.62,corte de luz
+2025-02-24,sabor,Dulce de leche,2.09,corte de luz
+2025-02-24,sabor,Dulce de leche granizado,2.41,corte de luz
+2025-02-24,sabor,Frutilla a la crema,2.82,corte de luz
+2025-02-24,sabor,Banana split,2.66,corte de luz
+2025-02-24,sabor,Durazno a la crema,3.44,corte de luz
+2025-02-24,sabor,Limón,2.83,corte de luz
+2025-02-24,sabor,Frutilla al agua,3.53,corte de luz
+2025-02-24,sabor,Maracuyá,2.65,corte de luz
+2025-02-24,sabor,Cookies,2.14,corte de luz
+2025-02-24,sabor,Tramontana,3.28,corte de luz
+2025-02-26,sabor,Banana split,2.41,cristalizado
+2025-02-26,insumo,banana,1.34,en mal estado
+2025-02-28,sabor,Menta granizada,0.87,cristalizado
+2025-03-03,sabor,Dulce de leche granizado,0.99,cristalizado
+2025-03-03,insumo,durazno,0.65,en mal estado
+2025-03-05,sabor,Menta granizada,1.13,cristalizado
+2025-03-06,sabor,Durazno a la crema,1.39,cristalizado
+2025-03-07,sabor,Banana split,1.58,cristalizado
+2025-03-09,sabor,Vainilla,1.23,cristalizado
+2025-03-09,sabor,Chocolate,1.42,cristalizado
+2025-03-12,sabor,Menta granizada,1.4,cristalizado
+2025-03-12,sabor,Maracuyá,1.62,cristalizado
+2025-03-14,sabor,Maracuyá,1.53,cristalizado
+2025-03-16,insumo,frutilla,0.64,en mal estado
+2025-03-18,sabor,Frutilla al agua,2.04,cristalizado
+2025-03-21,insumo,limón,1.28,en mal estado
+2025-03-23,insumo,durazno,1.25,en mal estado
+2025-03-25,insumo,banana,0.9,en mal estado
+2025-04-03,sabor,Menta granizada,1.01,cristalizado
+2025-04-04,sabor,Menta granizada,1.93,cristalizado
+2025-04-09,sabor,Vainilla,0.53,cristalizado
+2025-04-10,sabor,Limón,1.29,cristalizado
+2025-04-11,sabor,Cookies,2.02,cristalizado
+2025-04-18,sabor,Menta granizada,0.65,cristalizado
+2025-04-18,sabor,Chocolate amargo,1.46,cristalizado
+2025-04-19,sabor,Menta granizada,1.35,cristalizado
+2025-04-20,insumo,limón,0.37,en mal estado
+2025-04-21,insumo,banana,0.86,en mal estado
+2025-04-23,sabor,Menta granizada,1.88,cristalizado
+2025-04-26,insumo,limón,0.51,en mal estado
+2025-04-30,insumo,durazno,0.36,en mal estado
+2025-05-05,sabor,Banana split,1.76,cristalizado
+2025-05-06,insumo,banana,1.26,en mal estado
+2025-05-08,insumo,frutilla,1.09,en mal estado
+2025-05-11,sabor,Limón,2.43,cristalizado
+2025-05-11,insumo,frutilla,0.33,en mal estado
+2025-05-12,insumo,banana,1.32,en mal estado
+2025-05-13,sabor,Banana split,0.66,cristalizado
+2025-05-14,sabor,Frutilla a la crema,2.09,cristalizado
+2025-05-17,insumo,durazno,0.66,en mal estado
+2025-05-19,sabor,Chocolate amargo,1.7,cristalizado
+2025-05-20,sabor,Frutilla al agua,2.46,cristalizado
+2025-05-30,insumo,durazno,1.2,en mal estado
+2025-06-01,insumo,frutilla,0.79,en mal estado
+2025-06-05,sabor,Tramontana,1.24,cristalizado
+2025-06-08,sabor,Menta granizada,1.62,cristalizado
+2025-06-09,insumo,frutilla,0.46,en mal estado
+2025-06-14,sabor,Frutilla a la crema,0.8,cristalizado
+2025-06-18,sabor,Pistacho,2.3,cristalizado
+2025-06-21,sabor,Dulce de leche,1.91,cristalizado
+2025-06-24,insumo,maracuyá,1.17,en mal estado
+2025-06-25,sabor,Pistacho,1.1,cristalizado
+2025-06-30,sabor,Menta granizada,0.81,cristalizado
+2025-06-30,sabor,Banana split,1.82,cristalizado
+2025-07-02,sabor,Pistacho,1.96,cristalizado
+2025-07-03,sabor,Pistacho,0.52,cristalizado
+2025-07-11,insumo,banana,0.6,en mal estado
+2025-07-19,sabor,Crema americana,1.53,cristalizado
+2025-07-19,sabor,Tramontana,2.36,cristalizado
+2025-07-23,sabor,Limón,2.37,cristalizado
+2025-07-24,sabor,Pistacho,0.63,cristalizado
+2025-07-24,insumo,banana,0.32,en mal estado
+2025-07-26,sabor,Tramontana,1.74,cristalizado
+2025-07-27,sabor,Menta granizada,1.51,cristalizado
+2025-07-27,insumo,durazno,0.31,en mal estado
+2025-07-29,sabor,Menta granizada,1.92,cristalizado
+2025-07-31,sabor,Dulce de leche,1.66,cristalizado
+2025-07-31,sabor,Cookies,0.91,cristalizado
+2025-08-04,sabor,Dulce de leche granizado,1.49,cristalizado
+2025-08-06,sabor,Menta granizada,1.96,cristalizado
+2025-08-06,sabor,Banana split,1.85,cristalizado
+2025-08-08,sabor,Banana split,1.45,cristalizado
+2025-08-08,sabor,Frutilla al agua,2.23,cristalizado
+2025-08-14,sabor,Crema americana,0.98,cristalizado
+2025-08-16,sabor,Banana split,0.99,cristalizado
+2025-08-19,sabor,Vainilla,0.6,cristalizado
+2025-08-27,sabor,Pistacho,1.57,cristalizado
+2025-08-28,insumo,limón,1.06,en mal estado
+2025-09-02,insumo,durazno,0.35,en mal estado
+2025-09-03,insumo,limón,1.23,en mal estado
+2025-09-06,sabor,Frutilla al agua,1.56,cristalizado
+2025-09-06,insumo,banana,0.65,en mal estado
+2025-09-09,sabor,Cookies,0.56,cristalizado
+2025-09-09,insumo,banana,0.64,en mal estado
+2025-09-10,insumo,maracuyá,0.43,en mal estado
+2025-09-21,insumo,limón,0.41,en mal estado
+2025-09-26,sabor,Menta granizada,0.9,cristalizado
+2025-09-27,sabor,Chocolate,1.85,cristalizado
+2025-09-30,insumo,banana,0.53,en mal estado
+2025-10-06,sabor,Dulce de leche granizado,1.58,cristalizado
+2025-10-11,insumo,limón,1.35,en mal estado
+2025-10-13,sabor,Banana split,1.39,cristalizado
+2025-10-16,sabor,Chocolate amargo,0.62,cristalizado
+2025-10-17,sabor,Chocolate,2.22,cristalizado
+2025-10-19,sabor,Frutilla al agua,2.14,cristalizado
+2025-10-19,insumo,limón,1.27,en mal estado
+2025-10-20,sabor,Banana split,0.59,cristalizado
+2025-10-21,sabor,Crema americana,1.12,cristalizado
+2025-10-22,sabor,Limón,0.81,cristalizado
+2025-10-23,sabor,Frutilla al agua,2.28,cristalizado
+2025-10-25,sabor,Frutilla a la crema,0.63,cristalizado
+2025-10-27,insumo,frutilla,0.7,en mal estado
+2025-10-30,insumo,banana,1.1,en mal estado
+2025-10-31,sabor,Tramontana,1.64,cristalizado
+2025-11-02,sabor,Vainilla,1.93,cristalizado
+2025-11-02,sabor,Dulce de leche granizado,2.21,cristalizado
+2025-11-03,insumo,durazno,1.48,en mal estado
+2025-11-05,sabor,Menta granizada,1.93,cristalizado
+2025-11-05,insumo,durazno,1.14,en mal estado
+2025-11-10,sabor,Frutilla al agua,2.05,cristalizado
+2025-11-10,insumo,durazno,1.48,en mal estado
+2025-11-12,sabor,Banana split,0.87,cristalizado
+2025-11-13,sabor,Menta granizada,1.57,cristalizado
+2025-11-13,sabor,Banana split,1.95,cristalizado
+2025-11-13,sabor,Tramontana,1.59,cristalizado
+2025-11-15,sabor,Vainilla,1.08,cristalizado
+2025-11-15,insumo,limón,1.1,en mal estado
+2025-11-15,insumo,maracuyá,1.07,en mal estado
+2025-11-17,insumo,banana,1.16,en mal estado
+2025-11-19,sabor,Banana split,1.45,cristalizado
+2025-11-20,sabor,Menta granizada,2.1,cristalizado
+2025-11-21,sabor,Frutilla al agua,2.13,cristalizado
+2025-11-26,sabor,Chocolate amargo,0.99,cristalizado
+2025-11-28,insumo,durazno,1.3,en mal estado
+2025-12-06,sabor,Menta granizada,0.68,cristalizado
+2025-12-11,insumo,durazno,0.58,en mal estado
+2025-12-11,insumo,limón,1.29,en mal estado
+2025-12-12,sabor,Menta granizada,1.96,cristalizado
+2025-12-15,insumo,limón,0.91,en mal estado
+2025-12-19,sabor,Chocolate,0.64,cristalizado
+2025-12-20,sabor,Frutilla a la crema,1.41,cristalizado
+2025-12-20,insumo,banana,1.46,en mal estado
+2025-12-25,insumo,frutilla,0.93,en mal estado
+2025-12-26,sabor,Granizado,1.18,cristalizado
+2025-12-26,sabor,Limón,1.14,cristalizado
+2025-12-26,insumo,limón,1.26,en mal estado
+2025-12-28,sabor,Frutilla a la crema,1.14,cristalizado
+2025-12-28,insumo,banana,0.58,en mal estado
+2025-12-28,insumo,maracuyá,0.59,en mal estado

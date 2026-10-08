@@ -1,0 +1,68 @@
+sabor,insumo,cantidad_por_kg
+Vainilla,leche,0.55
+Vainilla,crema,0.25
+Vainilla,azúcar,0.17
+Vainilla,vainilla,0.01
+Crema americana,leche,0.55
+Crema americana,crema,0.25
+Crema americana,azúcar,0.17
+Crema americana,vainilla,0.005
+Menta granizada,leche,0.55
+Menta granizada,crema,0.25
+Menta granizada,azúcar,0.17
+Menta granizada,esencia de menta,0.01
+Menta granizada,chispitas de chocolate,0.1
+Chocolate,leche,0.55
+Chocolate,crema,0.25
+Chocolate,azúcar,0.17
+Chocolate,cacao,0.08
+Chocolate amargo,leche,0.55
+Chocolate amargo,crema,0.25
+Chocolate amargo,azúcar,0.17
+Chocolate amargo,cacao,0.12
+Granizado,leche,0.55
+Granizado,crema,0.25
+Granizado,azúcar,0.17
+Granizado,chispitas de chocolate,0.15
+Dulce de leche,leche,0.55
+Dulce de leche,crema,0.25
+Dulce de leche,azúcar,0.17
+Dulce de leche,dulce de leche,0.3
+Dulce de leche granizado,leche,0.55
+Dulce de leche granizado,crema,0.25
+Dulce de leche granizado,azúcar,0.17
+Dulce de leche granizado,dulce de leche,0.25
+Dulce de leche granizado,chispitas de chocolate,0.1
+Frutilla a la crema,leche,0.55
+Frutilla a la crema,crema,0.25
+Frutilla a la crema,azúcar,0.17
+Frutilla a la crema,frutilla,0.3
+Banana split,leche,0.55
+Banana split,crema,0.25
+Banana split,azúcar,0.17
+Banana split,banana,0.25
+Banana split,dulce de leche,0.1
+Durazno a la crema,leche,0.55
+Durazno a la crema,crema,0.25
+Durazno a la crema,azúcar,0.17
+Durazno a la crema,durazno,0.3
+Limón,azúcar,0.25
+Limón,limón,0.35
+Frutilla al agua,azúcar,0.25
+Frutilla al agua,frutilla,0.4
+Maracuyá,azúcar,0.25
+Maracuyá,maracuyá,0.35
+Cookies,leche,0.55
+Cookies,crema,0.25
+Cookies,azúcar,0.17
+Cookies,galletitas,0.15
+Cookies,chispitas de chocolate,0.05
+Tramontana,leche,0.55
+Tramontana,crema,0.25
+Tramontana,azúcar,0.17
+Tramontana,dulce de leche,0.2
+Tramontana,galletitas,0.1
+Pistacho,leche,0.55
+Pistacho,crema,0.25
+Pistacho,azúcar,0.17
+Pistacho,pistacho,0.12
