@@ -60,5 +60,25 @@ for carpeta in ["datos/heladeria_centro", "datos/heladeria_barrio"]:
     assert ventas["producto"].isin(tablas["productos"]["producto"]).all()
     assert "paleta" in list(ventas["producto"]), "'  PALETA ' tenía que normalizarse, no descartarse"
     assert sum(reporte["descartes"]["ventas"].values()) == 4
+# 6. Clase Heladeria
+from heladeria import Heladeria
+
+centro = Heladeria("datos/heladeria_centro")
+barrio = Heladeria("datos/heladeria_barrio")
+
+assert centro.nombre == "Centro"
+assert centro.perfil_consumo() == "innovadora" and barrio.perfil_consumo() == "conservadora"
+assert centro.publico_principal() == "adultos" and barrio.publico_principal() == "familias"
+assert abs(centro.perfil_clientes().sum() - 1) < 0.01, "Los porcentajes de público tienen que sumar 100%"
+
+# La facturación tiene que coincidir con la de los tickets originales
+productos_vendidos = centro.tablas["ventas"].drop_duplicates("id_item")
+facturacion_original = (productos_vendidos["precio_unitario"] * productos_vendidos["cantidad"]).sum()
+assert abs(centro.resumen_mensual()["facturacion"].sum() - facturacion_original) < 1
+
+# Encapsulamiento: modificar la copia no cambia las ventas de la heladería
+copia = centro.ventas
+copia["kg"] = 0
+assert centro.ventas["kg"].sum() > 0
 
 print("Todas las pruebas pasaron ✔")
