@@ -1,10 +1,13 @@
 """Clase Heladeria: una heladería con sus ventas ya limpias, y las preguntas que responde sobre ellas."""
 import os
 
+import pandas as pd
+
 from datos import preparar
 from inventario import Inventario
 
 UMBRAL_CONSERVADOR = 0.45
+MOTIVOS_ACCIDENTALES = ["corte de luz"]
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
          "agosto", "septiembre", "octubre", "noviembre", "diciembre"]
 
@@ -88,6 +91,58 @@ class Heladeria:
         if self.porcentaje_finde() > UMBRAL_CONSERVADOR:
             return "conservadora"
         return "innovadora"
+
+    def merma_con_costo(self):
+        """Cada registro de merma con su costo en pesos, usando el costo de los insumos de ese mes."""
+        merma = self.tablas["merma"].reset_index().rename(columns={"index": "id"})
+        merma["mes"] = merma["fecha"].dt.month
+        costos = self.inventario.costo_mensual().stack().reset_index(name="costo_unitario")
+
+        recetas = self.tablas["recetas"].rename(columns={"sabor": "nombre"})
+        de_sabores = merma[merma["tipo"] == "sabor"].merge(recetas, on="nombre")
+        de_sabores["cantidad_insumo"] = de_sabores["cantidad"] * de_sabores["cantidad_por_kg"]
+        de_insumos = merma[merma["tipo"] == "insumo"].copy()
+        de_insumos["insumo"] = de_insumos["nombre"]
+        de_insumos["cantidad_insumo"] = de_insumos["cantidad"]
+
+        columnas = ["id", "mes", "insumo", "cantidad_insumo"]
+        detalle = pd.concat([de_sabores[columnas], de_insumos[columnas]]).merge(costos, on=["mes", "insumo"])
+        detalle["costo"] = detalle["cantidad_insumo"] * detalle["costo_unitario"]
+        merma["costo"] = merma["id"].map(detalle.groupby("id")["costo"].sum()).fillna(0).round(0)
+        return merma.drop(columns="id")
+
+    def merma_por_motivo(self):
+        """Cuántas veces, cuántos kg y cuánta plata se tiró por cada motivo."""
+        merma = self.merma_con_costo()
+        resumen = merma.groupby("motivo").agg(
+            registros=("cantidad", "count"),
+            kg=("cantidad", "sum"),
+            costo=("costo", "sum"),
+        )
+        return resumen.sort_values("costo", ascending=False).round(1)
+
+    def merma_por_sabor(self):
+        """Kg de helado tirado por sabor y qué parte de lo que vende representa (sin contar accidentes)."""
+        merma = self.merma_con_costo()
+        evitable = merma[(merma["tipo"] == "sabor") & (~merma["motivo"].isin(MOTIVOS_ACCIDENTALES))]
+        resumen = evitable.groupby("nombre").agg(kg_tirados=("cantidad", "sum"), costo=("costo", "sum"))
+        resumen.index.name = "sabor"
+        kg_vendidos = self._ventas.groupby("sabor")["kg"].sum()
+        resumen["merma_sobre_ventas"] = resumen["kg_tirados"] / kg_vendidos
+        return resumen.sort_values("merma_sobre_ventas", ascending=False).round(3)
+
+    def sabores_a_discontinuar(self):
+        """Sabores fijos en carta que venden poco y se tiran mucho: candidatos a dejar su lugar."""
+        ranking = self.ranking_sabores()
+        merma = self.merma_por_sabor()
+        tabla = ranking.join(merma[["kg_tirados", "merma_sobre_ventas"]]).fillna({"kg_tirados": 0, "merma_sobre_ventas": 0})
+        en_carta = self.tablas["sabores"].set_index("sabor")["fecha_baja"].isna()
+        tabla = tabla[en_carta.reindex(tabla.index) & (tabla["edicion_limitada"] == "no")]
+
+        vende_poco = tabla["kg_por_dia"] < tabla["kg_por_dia"].quantile(0.25)
+        se_tira_mucho = tabla["merma_sobre_ventas"] > tabla["merma_sobre_ventas"].median()
+        candidatos = tabla[vende_poco & se_tira_mucho]
+        return candidatos[["kg_por_dia", "kg_tirados", "merma_sobre_ventas"]].sort_values("merma_sobre_ventas", ascending=False)
 
     def __str__(self):
         return (f"Heladería {self.nombre}: {self._ventas['kg'].sum():,.0f} kg vendidos, "

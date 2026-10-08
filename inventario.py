@@ -96,6 +96,14 @@ class Inventario:
         tabla["vencimiento"] = tabla["vencimiento"].dt.date
         return tabla[tabla["en_riesgo"] > 0].sort_values("dias_para_vencer")
 
+    def costo_mensual(self):
+        """Costo unitario promedio de cada insumo en cada mes (por la inflación, cambia mes a mes)."""
+        compras = self._compras.assign(mes=self._compras["fecha"].dt.month)
+        tabla = compras.groupby(["mes", "insumo"])["costo_unitario"].mean().unstack()
+        tabla = tabla.reindex(range(1, 13)).ffill().bfill()
+        tabla.index.name = "mes"
+        return tabla
+
     def es_abastecible(self, insumo, mes):
         """False si el insumo está en temporada de escasez ese mes."""
         texto = self._insumos.loc[insumo, "meses_escasez"]

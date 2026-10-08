@@ -24,4 +24,8 @@ for carpeta in carpetas:
     print(inventario.riesgo_vencimiento().to_string())
     print("\nCada cuántos días se compra cada insumo (los 5 más frecuentes):")
     print(inventario.frecuencia_pedido().head(5).to_string())
+    print("\nMerma por motivo (costo en pesos de materia prima):")
+    print(heladeria.merma_por_motivo().to_string())
+    print("\nSabores candidatos a salir de carta (venden poco y se tiran mucho):")
+    print(heladeria.sabores_a_discontinuar().to_string())
     print()

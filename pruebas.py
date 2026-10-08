@@ -98,5 +98,14 @@ try:
     raise AssertionError("Debía detectar stock negativo")
 except ValueError:
     pass
+# 8. Merma
+merma = centro.merma_con_costo()
+assert (merma["costo"] > 0).all(), "Todo lo que se tira tiene un costo"
+por_sabor = centro.merma_por_sabor()
+cristalizado = merma[(merma["tipo"] == "sabor") & (merma["motivo"] == "cristalizado")]["cantidad"].sum()
+assert abs(por_sabor["kg_tirados"].sum() - cristalizado) < 0.01, "Los cortes de luz no cuentan contra el sabor"
+assert centro.sabores_a_discontinuar().index[0] == "menta granizada"
+assert barrio.sabores_a_discontinuar().index[0] == "menta granizada"
+assert "pistacho" not in centro.sabores_a_discontinuar().index, "Las ediciones limitadas no se discontinúan"
 
 print("Todas las pruebas pasaron ✔")
