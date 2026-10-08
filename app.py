@@ -3,6 +3,8 @@ import os
 
 import pandas as pd
 
+import graficos
+from comparador import Comparador
 from datos import PATRON_CARPETA, cumple_patron
 from heladeria import Heladeria
 from recomendador import Recomendador
@@ -14,8 +16,9 @@ pd.set_option("display.max_columns", 10)
 class App:
     """Muestra el menú en un bucle hasta que el usuario elige salir."""
 
-    def __init__(self, carpeta_datos="datos", entrada=input):
+    def __init__(self, carpeta_datos="datos", entrada=input, carpeta_salidas="salidas"):
         self.carpeta_datos = carpeta_datos
+        self.carpeta_salidas = carpeta_salidas
         self.entrada = entrada
         self.heladeria = None
         self.opciones = {
@@ -28,6 +31,8 @@ class App:
             "7": ("Inventario: qué reponer y qué se puede vencer", self.ver_inventario, True),
             "8": ("Merma y sabores candidatos a salir", self.ver_merma, True),
             "9": ("Recomendación del próximo sabor", self.ver_recomendacion, True),
+            "10": ("Comparar todas las heladerías", self.comparar, False),
+            "11": ("Guardar gráficos de la heladería cargada", self.guardar_graficos, True),
         }
 
     def heladerias_disponibles(self):
@@ -128,3 +133,20 @@ class App:
         recomendacion = Recomendador(self.heladeria, int(texto)).recomendar()
         print()
         print(recomendacion)
+
+    def comparar(self):
+        disponibles = self.heladerias_disponibles()
+        print(f"Cargando {len(disponibles)} heladerías...")
+        heladerias = [Heladeria(os.path.join(self.carpeta_datos, nombre)) for nombre in disponibles]
+        print(Comparador(heladerias).tabla_comparativa().to_string())
+        rutas = [graficos.grafico_estacionalidad(heladerias, self.carpeta_salidas),
+                 graficos.grafico_clientes(heladerias, self.carpeta_salidas)]
+        print("\nGráficos guardados en:", ", ".join(rutas))
+
+    def guardar_graficos(self):
+        rutas = [graficos.grafico_ranking(self.heladeria, self.carpeta_salidas),
+                 graficos.grafico_merma(self.heladeria, self.carpeta_salidas),
+                 graficos.grafico_estacionalidad([self.heladeria], self.carpeta_salidas)]
+        print("Gráficos guardados en:")
+        for ruta in rutas:
+            print(f"  {ruta}")

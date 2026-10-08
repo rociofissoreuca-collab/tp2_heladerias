@@ -145,8 +145,8 @@ except NotImplementedError:
 from app import App
 
 respuestas = iter(["2", "x", "", "1", "9", "1", "abc", "1", "2",
-                   "2", "3", "4", "5", "6", "7", "8", "9", "13", "9", "julio", "9", "12", "0"])
-app = App(entrada=lambda mensaje: "" if "Enter" in mensaje else next(respuestas))
+                   "2", "3", "4", "5", "6", "7", "8", "9", "13", "9", "julio", "9", "12", "10", "11", "0"])
+app = App(entrada=lambda mensaje: "" if "Enter" in mensaje else next(respuestas), carpeta_salidas="salidas_prueba")
 salida = io.StringIO()
 with redirect_stdout(salida):
     app.ejecutar()
@@ -155,5 +155,24 @@ assert app.heladeria is not None and app.heladeria.nombre == "Centro"
 assert "Primero cargá una heladería" in texto and "Opción inválida" in texto
 assert "RECOMENDACIÓN PARA CENTRO" in texto and "¡Hasta luego!" in texto
 assert App(carpeta_datos="carpeta_que_no_existe").heladerias_disponibles() == []
+
+# 11. Comparador y gráficos
+from comparador import Comparador
+
+try:
+    Comparador([centro])
+    raise AssertionError("Debía pedir al menos dos heladerías")
+except ValueError:
+    pass
+tabla = Comparador([centro, barrio]).tabla_comparativa()
+assert list(tabla.columns) == ["Centro", "Barrio"]
+assert tabla.loc["perfil", "Centro"] == "innovadora" and tabla.loc["perfil", "Barrio"] == "conservadora"
+
+graficos_esperados = ["estacionalidad.png", "clientes.png", "ranking_centro.png", "merma_centro.png"]
+for archivo in graficos_esperados:
+    ruta = os.path.join("salidas_prueba", archivo)
+    assert os.path.isfile(ruta), f"El menú debía guardar {archivo}"
+    os.remove(ruta)
+os.rmdir("salidas_prueba")
 
 print("Todas las pruebas pasaron ✔")
