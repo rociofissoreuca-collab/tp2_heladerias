@@ -2,6 +2,7 @@
 import os
 
 from datos import preparar
+from inventario import Inventario
 
 UMBRAL_CONSERVADOR = 0.45
 MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
@@ -30,6 +31,7 @@ class Heladeria:
         self._ventas = agregar_columnas(tablas["ventas"], tablas["productos"])
         self.fecha_inicio = self._ventas["fecha"].min()
         self.fecha_referencia = self._ventas["fecha"].max()
+        self.inventario = Inventario(tablas, self._ventas, self.fecha_referencia)
 
     @property
     def ventas(self):

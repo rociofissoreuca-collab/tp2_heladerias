@@ -80,5 +80,23 @@ assert abs(centro.resumen_mensual()["facturacion"].sum() - facturacion_original)
 copia = centro.ventas
 copia["kg"] = 0
 assert centro.ventas["kg"].sum() > 0
+# 7. Clase Inventario
+from inventario import Inventario
+
+inventario = centro.inventario
+assert (inventario.stock_actual() >= 0).all(), "El stock nunca puede ser negativo"
+assert not inventario.es_abastecible("frutilla", 7), "En julio la frutilla está en escasez"
+assert inventario.es_abastecible("frutilla", 12) and inventario.es_abastecible("cacao", 7)
+assert (inventario.a_reponer()["dias_cobertura"] > 0).all(), "No se piden insumos que ya no se usan"
+
+# Si los datos no cierran (sin stock inicial ni compras), el inventario lo detecta
+tablas_rotas = dict(centro.tablas)
+tablas_rotas["insumos"] = centro.tablas["insumos"].assign(stock_inicial=0)
+tablas_rotas["compras"] = centro.tablas["compras"].iloc[0:0]
+try:
+    Inventario(tablas_rotas, centro.ventas, centro.fecha_referencia)
+    raise AssertionError("Debía detectar stock negativo")
+except ValueError:
+    pass
 
 print("Todas las pruebas pasaron ✔")
