@@ -1,4 +1,6 @@
+import io
 import os
+from contextlib import redirect_stdout
 
 import pandas as pd
 
@@ -138,5 +140,20 @@ try:
     raise AssertionError("La clase madre no debe definir la acción")
 except NotImplementedError:
     pass
+
+# 10. Menú: una sesión completa con entradas válidas e inválidas no rompe la app
+from app import App
+
+respuestas = iter(["2", "x", "", "1", "9", "1", "abc", "1", "2",
+                   "2", "3", "4", "5", "6", "7", "8", "9", "13", "9", "julio", "9", "12", "0"])
+app = App(entrada=lambda mensaje: "" if "Enter" in mensaje else next(respuestas))
+salida = io.StringIO()
+with redirect_stdout(salida):
+    app.ejecutar()
+texto = salida.getvalue()
+assert app.heladeria is not None and app.heladeria.nombre == "Centro"
+assert "Primero cargá una heladería" in texto and "Opción inválida" in texto
+assert "RECOMENDACIÓN PARA CENTRO" in texto and "¡Hasta luego!" in texto
+assert App(carpeta_datos="carpeta_que_no_existe").heladerias_disponibles() == []
 
 print("Todas las pruebas pasaron ✔")

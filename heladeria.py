@@ -92,6 +92,15 @@ class Heladeria:
             return "conservadora"
         return "innovadora"
 
+    def ventas_por_canal(self):
+        """Qué parte de los productos y de la facturación entra por cada canal (salón, para llevar, delivery)."""
+        productos_vendidos = self._ventas.drop_duplicates("id_item")
+        unidades = productos_vendidos.groupby("canal")["cantidad"].sum()
+        facturacion = self._ventas.groupby("canal")["importe"].sum()
+        tabla = (unidades / unidades.sum()).to_frame("productos")
+        tabla["facturacion"] = facturacion / facturacion.sum()
+        return tabla.sort_values("productos", ascending=False).round(3)
+
     def merma_con_costo(self):
         """Cada registro de merma con su costo en pesos, usando el costo de los insumos de ese mes."""
         merma = self.tablas["merma"].reset_index().rename(columns={"index": "id"})
